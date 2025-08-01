@@ -4,7 +4,7 @@
 ### 📌 Goals
 - Feed-forward 및 Back-propagation 구현
 - Stochastic Gradient Descent (SGD) 기반 최적화 적용
-- ReLU 활성화 함수, Softmax 출력층, Cross-Entropy 손실 함수 구현
+- ReLU 함수, Softmax 출력층 함수, Cross-Entropy 손실 함수 구현
 - 성능 비교: 직접 구현한 MLP vs. scikit-learn MLPClassifier
 - 실험 데이터셋:
   - Iris 데이터셋
