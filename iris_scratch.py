@@ -10,7 +10,6 @@ from sklearn.preprocessing import OneHotEncoder  # 1,0으로 카테고리 변경
 
 # 1. iris data set 불러오기
 
-
 def load_iris_dataset():
     # uci 사이트에서 제공하는 iris 데이터 세트가 있는 url
     iris_data_url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
@@ -37,13 +36,10 @@ def load_iris_dataset():
 
     return X, y
 
-
 # X, y 데이터 분리
 X, y = load_iris_dataset()
 
 # 데이터셋을 랜덤하게 나누는 함수 정의
-
-
 def train_test_split_sc(X, y, test_size=0.3, random_state=None):
     np.random.seed(random_state)  # 시드 설정
 
@@ -65,7 +61,6 @@ def train_test_split_sc(X, y, test_size=0.3, random_state=None):
     y_train, y_test = y[train_indices], y[test_indices]
 
     return X_train, X_test, y_train, y_test
-
 
 # train set, test set 분리
 X_train, X_test, y_train, y_test = train_test_split_sc(X, y)
@@ -92,28 +87,20 @@ y_one_hot = np.eye(num_labels)[y]
 
 # 활성화 함수 정의
 # ReLU 함수
-
-
 def relu(Z):
     return np.maximum(0, Z)
 
 # ReLU 함수의 미분
-
-
 def relu_derivative(Z):
     return (Z > 0).astype(float)
 
 # 소프트맥스 함수 (출력층에 사용)
-
-
 def softmax(Z):
     Z = np.array(Z, dtype=np.float64)  # Z를 float64로 변환하여 안정성 확보
     exp_Z = np.exp(Z - np.max(Z, axis=1, keepdims=True))
     return exp_Z / np.sum(exp_Z, axis=1, keepdims=True)
 
 # 순전파 (Forward Propagation)
-
-
 def forward_propagation(X):
     Z1 = np.dot(X, w1) + b1
     A1 = relu(Z1)
@@ -131,8 +118,6 @@ def forward_propagation(X):
     return A_out, cache
 
 # 역전파 (Backward Propagation)
-
-
 def backward_propagation(X, y, cache):
     Z1, A1, Z2, A2, Z3, A3, Z_out, A_out = cache
     m = X.shape[0]
@@ -164,8 +149,6 @@ def backward_propagation(X, y, cache):
     return grads
 
 # 가중치 업데이트 함수
-
-
 def update_parameters(grads, learning_rate):
     global w1, b1, w2, b2, w3, b3, w_out, b_out
     dw1, db1, dw2, db2, dw3, db3, dw_out, db_out = grads
@@ -178,7 +161,6 @@ def update_parameters(grads, learning_rate):
     b3 -= learning_rate * db3
     w_out -= learning_rate * dw_out
     b_out -= learning_rate * db_out
-
 
 # 학습 데이터와 테스트 데이터 분리
 X_train, X_test, y_train, y_test = train_test_split(

@@ -14,18 +14,18 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3) # train
 
 # 2. MLP 모델 생성 & parameter 조정
 mlp = MLPClassifier(hidden_layer_sizes=(784, 100, 25), activation='logistic', max_iter=1000, random_state=138)
-    # 은닉층 3개, 1번째:노드784개 2번째:100개, 3번째:25개
-    # 활성화 함수 : 로지스틱 시그모이드
-    # epoch의 수 : 1000번
-    # random state : 138
+# 은닉층 3개, 1번째:노드784개 2번째:100개, 3번째:25개
+# 활성화 함수 : 로지스틱 시그모이드
+# epoch의 수 : 1000번
+# random state : 138
 
 # 3. MLP 모델 학습
 mlp.fit(X_train, y_train)
-    # fit() scikitlearn 모델을 훈련함, 매개변수로 훈련해 사용할 특징과 정답 data를 전달함
+# fit() scikitlearn 모델을 훈련함, 매개변수로 훈련해 사용할 특징과 정답 data를 전달함
 
 # 4. MLP 모델 예측
 y_pred = mlp.predict(X_test)
-    # predict() scikitlearn 모델을 훈련하고 예측함, 특징 데이터만 매개변수로 받음
+# predict() scikitlearn 모델을 훈련하고 예측함, 특징 데이터만 매개변수로 받음
 
 # 5. 정확도 평가결과
 accuracy = accuracy_score(y_test, y_pred)

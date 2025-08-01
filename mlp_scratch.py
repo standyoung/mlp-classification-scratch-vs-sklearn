@@ -4,11 +4,10 @@ from sklearn.metrics import accuracy_score
 
 # 1. MNIST data set 불러오기
 mnist = fetch_openml(name='mnist_784', as_frame=False) 
-    # MNIST data를 numpy.ndarray 형태로 불러오기
-    # as_frame = True일 경우 DataFrame으로 변환되므로 False를 써줘야 함
+# MNIST data를 numpy.ndarray 형태로 불러오기
+# as_frame = True일 경우 DataFrame으로 변환되므로 False를 써줘야 함
 X, y = mnist["data"], mnist["target"] # 특징 벡터를 X에 넣고 label 벡터를 y에 넣음
-    # 7만개의 이미지 28x28 픽셀로 784개의 특징이 있음
-
+# 7만개의 이미지 28x28 픽셀로 784개의 특징이 있음
 
 # 2. 데이터 전처리
 X = X / 255 # 0~255까지의 픽셀 이미지 데이터를 정규화 시킴
@@ -20,18 +19,18 @@ Y_new = Y_new.T.reshape(digits, examples) # one-hot encode labels
     
 m = 60000
 m_test = X.shape[0] - m
-    # sklearn으로 불러온 MNIST는 7만개 이미지 중 6만개는 학습용, 1만개는 테스트용으로 정렬되어있음
-    # 6만개의 학습용 이미지
-    # 나머지 1만개의 테스트용 이미지
+# sklearn으로 불러온 MNIST는 7만개 이미지 중 6만개는 학습용, 1만개는 테스트용으로 정렬되어있음
+# 6만개의 학습용 이미지
+# 나머지 1만개의 테스트용 이미지
 
 X_train, X_test = X[:m].T, X[m:].T
 Y_train, Y_test = Y_new[:,:m], Y_new[:,m:]
-    # 데이터를 전치시켜 train set, test set에 넣음
-    # dataset를 train set와 test set로 분할하기
+# 데이터를 전치시켜 train set, test set에 넣음
+# dataset를 train set와 test set로 분할하기
    
 shuffle_index = np.random.permutation(m) 
 X_train, Y_train = X_train[:, shuffle_index], Y_train[:, shuffle_index]
-    # 학습을 위해 train set를 섞음
+# 학습을 위해 train set를 섞음
 
 # 3. parameter 조정
 n_x = X_train.shape[0]
@@ -42,7 +41,7 @@ batch_size = 128 # 배치 사이즈 128로 설정
 batches = -(-m // batch_size)
 np.random.seed(138)
 
-    # initialization
+# initialization
 params = { "W1": np.random.randn(n_h, n_x) * np.sqrt(1. / n_x),
           "b1": np.zeros((n_h, 1)) * np.sqrt(1. / n_x),
           "W2": np.random.randn(digits, n_h) * np.sqrt(1. / n_h),
@@ -83,7 +82,6 @@ def back_propagate(X, Y, params, cache):
     
     grads = {"dW1": dW1, "db1": db1, "dW2": dW2, "db2": db2}
     return grads
-
 
 
 # train
