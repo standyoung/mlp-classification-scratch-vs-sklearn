@@ -21,6 +21,5 @@
 ├── iris_scikitlearn.py       # Iris 데이터셋 - scikit-learn MLPClassifier
 ├── iris_scratch.py           # Iris 데이터셋 - scratch MLP 구현
 ├── mnist_scikitlearn.py      # MNIST 데이터셋 - scikit-learn MLPClassifier
-├── mnist_scratch.py          # MNIST 데이터셋 - scratch MLP 구현
-└── README.md                 # 프로젝트 설명 파일
+└── mnist_scratch.py          # MNIST 데이터셋 - scratch MLP 구현
 ```
